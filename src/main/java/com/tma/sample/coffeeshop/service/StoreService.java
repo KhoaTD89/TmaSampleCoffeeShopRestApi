@@ -11,5 +11,7 @@ import java.util.List;
 public interface StoreService {
     List<StoreDTO> findAll();
     StoreDTO viewStoreDetail(long id);
-    Store save(StoreDTO storeDTO);
+    Store save(StoreDTO storeDTO,long addressId);
+    Store edit(long storeId,StoreDTO storeDTO,long addressId);
+    boolean delete(long storeId);
 }

@@ -25,7 +25,6 @@ public class StoreRestController {
     @Autowired
     private WardReposiroty wardReposiroty;
 
-
     @GetMapping
     public List<StoreDTO> storeList(){
         return storeService.findAll();
@@ -38,20 +37,19 @@ public class StoreRestController {
     }
 
     @PostMapping
-    public void saveStore(@RequestBody StoreDTO storeDTO){
-        storeService.save(storeDTO);
+    public void saveStore(@RequestBody StoreDTO storeDTO,@RequestParam("addressId") long addressId){
+        storeService.save(storeDTO,addressId);
     }
 
     @PutMapping("/{id}")
-    public void editStore(@RequestBody Store store){
-        storeRepository.save(store);
+    public void editStore(@RequestBody StoreDTO storeDTO
+            ,@PathVariable("id") long storeId
+            ,@RequestParam("addressId") long addressId){
+        storeService.edit(storeId,storeDTO,addressId);
     }
 
     @DeleteMapping("/{id}")
     public void deleteStore(@PathVariable long id){
-        Store store = storeRepository.findById(id).orElse(null);
-        if(store!=null){
-            storeRepository.delete(store);
-        }
+        storeService.delete(id);
     }
 }

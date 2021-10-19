@@ -8,6 +8,7 @@ import lombok.*;
 @Data
 @Getter @Setter
 public class StoreDTO {
+    private long id;
     private String name;
     private String description;
     private String imagePath;
@@ -15,5 +16,4 @@ public class StoreDTO {
     private String phone;
     private String openTime;
     private String closeTime;
-
 }

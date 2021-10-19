@@ -9,11 +9,8 @@ import lombok.Data;
 public class AddressViewDTO {
 
     private String description;
-
     private String building;
-
     private String gate;
-
     private String ward;
     private String district;
     private String city;

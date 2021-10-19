@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -33,6 +34,7 @@ public class Address extends BaseEntity{
 
     @OneToOne
     @JoinColumn(name = "store_id")
+    @RestResource(rel = "store")
     private Store store;
 
     public Address() {
