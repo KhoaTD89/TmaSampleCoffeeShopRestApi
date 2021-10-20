@@ -13,24 +13,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/store")
+@RequestMapping("/api")
 public class StoreRestController {
 
     @Autowired
     private StoreService storeService;
-    @Autowired
-    private StoreRepository storeRepository;
-    @Autowired
-    private AddressRepository addressRepository;
-    @Autowired
-    private WardReposiroty wardReposiroty;
 
-    @GetMapping
+
+    @GetMapping("/stores")
     public List<StoreDTO> storeList(){
         return storeService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/store/{id}")
     public StoreDTO viewStoreDetail(@PathVariable long id){
         StoreDTO storeDTO = storeService.viewStoreDetail(id);
         return storeDTO;
@@ -41,14 +36,14 @@ public class StoreRestController {
         storeService.save(storeDTO,addressId);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/store/{id}")
     public void editStore(@RequestBody StoreDTO storeDTO
             ,@PathVariable("id") long storeId
             ,@RequestParam("addressId") long addressId){
         storeService.edit(storeId,storeDTO,addressId);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/store/{id}")
     public void deleteStore(@PathVariable long id){
         storeService.delete(id);
     }

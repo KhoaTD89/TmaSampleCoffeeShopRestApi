@@ -1,5 +1,7 @@
 package com.tma.sample.coffeeshop.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -16,8 +18,10 @@ public class Ward extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "district_id")
+    @JsonBackReference
     private District district;
 
     @OneToMany(mappedBy = "ward")
+    @JsonManagedReference
     private List<Address> addresses;
 }

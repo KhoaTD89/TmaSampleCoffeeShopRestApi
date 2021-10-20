@@ -1,5 +1,6 @@
 package com.tma.sample.coffeeshop.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class Address extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "ward_id")
+    @JsonBackReference
     private Ward ward;
 
     @ManyToOne

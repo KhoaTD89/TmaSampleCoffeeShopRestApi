@@ -7,30 +7,21 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.List;
 
 @SpringBootTest
-class StoreRepoTest {
+class AddressRopeTest {
     @Autowired
     AddressRepository addressRepository;
 
     @Test
-    void contextLoads() {
-        String hh = "23:00";
-        LocalTime localTime= Utils.formatStringToLocalTime(hh);
-        System.out.println(localTime);
-        Assertions.assertEquals(1,1);
-    }
-
-    @Test
     void testFindAddressByStoreId(){
-        List<Address> byStoreId = addressRepository.findByStoreId(2);
-        System.out.println(byStoreId.get(0).getId());
-        Assertions.assertTrue(byStoreId.size()==0);
+        List<Address> addresses = addressRepository.findByCustomerId(100);
+        System.out.println(addresses.size());
+        System.out.println(addresses.get(0).getId());
+        Assertions.assertTrue(addresses.size()>0);
     }
 
 }

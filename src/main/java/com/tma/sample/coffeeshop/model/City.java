@@ -1,6 +1,10 @@
 package com.tma.sample.coffeeshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -10,14 +14,13 @@ import java.util.List;
 
 @Entity
 @Data
-public class City extends BaseEntity{
+@Getter
+@Setter
+public class City extends BaseEntity {
 
     private String name;
 
-//    @ManyToOne
-//    @JoinColumn(name = "province_id")
-//    private Province province;
-
     @OneToMany(mappedBy = "city")
+    @JsonManagedReference
     private List<District> districts;
 }
