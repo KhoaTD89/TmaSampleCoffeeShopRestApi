@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.restControllerAdmin;
+package com.tma.sample.coffeeshop.controller.admin;
 
 import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;

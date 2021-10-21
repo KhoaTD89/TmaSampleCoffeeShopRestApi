@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.restControllerAdmin;
+package com.tma.sample.coffeeshop.controller.admin;
 
 import com.tma.sample.coffeeshop.model.City;
 import com.tma.sample.coffeeshop.repository.CityRepository;

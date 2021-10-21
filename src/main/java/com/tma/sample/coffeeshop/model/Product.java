@@ -28,8 +28,15 @@ public class Product extends BaseEntity{
     @JsonManagedReference
     private List<ProductCategory> productCategories;
 
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<ProductExtraOption> productExtraOptions;
+
     private String name;
 
     private boolean isActive;
+
+
+
 
 }

@@ -1,7 +1,9 @@
 package com.tma.sample.coffeeshop.model;
 
+import com.tma.sample.coffeeshop.enums.OrderStatus;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -27,7 +29,13 @@ public class Order extends BaseEntity{
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails;
 
-//    @CreationTimestamp
-    private LocalDateTime createdDate;
+    @CreationTimestamp
+    private LocalDateTime created;
+
+    @UpdateTimestamp
+    private LocalDateTime updated;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
 }

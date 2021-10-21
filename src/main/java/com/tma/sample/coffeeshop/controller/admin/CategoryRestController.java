@@ -1,8 +1,7 @@
-package com.tma.sample.coffeeshop.restControllerAdmin;
+package com.tma.sample.coffeeshop.controller.admin;
 
 import com.tma.sample.coffeeshop.model.Category;
 import com.tma.sample.coffeeshop.service.CategoryService;
-import com.tma.sample.coffeeshop.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
