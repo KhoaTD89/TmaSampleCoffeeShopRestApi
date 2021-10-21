@@ -15,7 +15,7 @@ public class Customer extends BaseEntity{
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
-    private LocalDate email;
+    private String email;
     private String grade;
 
     @OneToMany(mappedBy = "customer")

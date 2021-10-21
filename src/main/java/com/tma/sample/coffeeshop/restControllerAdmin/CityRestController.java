@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.restController;
+package com.tma.sample.coffeeshop.restControllerAdmin;
 
 import com.tma.sample.coffeeshop.model.City;
 import com.tma.sample.coffeeshop.repository.CityRepository;
@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 

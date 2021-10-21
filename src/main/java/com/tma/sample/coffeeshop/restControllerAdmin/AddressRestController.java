@@ -1,17 +1,16 @@
-package com.tma.sample.coffeeshop.restController;
+package com.tma.sample.coffeeshop.restControllerAdmin;
 
 import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.service.AddressService;
-import com.tma.sample.coffeeshop.service.AddressServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping({"/admin"})
 public class AddressRestController {
     @Autowired
     private AddressService addressService;

@@ -1,10 +1,6 @@
-package com.tma.sample.coffeeshop.restController;
+package com.tma.sample.coffeeshop.restControllerAdmin;
 
 import com.tma.sample.coffeeshop.dto.StoreDTO;
-import com.tma.sample.coffeeshop.model.Store;
-import com.tma.sample.coffeeshop.repository.AddressRepository;
-import com.tma.sample.coffeeshop.repository.StoreRepository;
-import com.tma.sample.coffeeshop.repository.WardReposiroty;
 import com.tma.sample.coffeeshop.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,12 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/admin")
 public class StoreRestController {
 
     @Autowired
     private StoreService storeService;
-
 
     @GetMapping("/stores")
     public List<StoreDTO> storeList(){

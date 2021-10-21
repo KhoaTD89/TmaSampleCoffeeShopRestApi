@@ -1,11 +1,10 @@
 package com.tma.sample.coffeeshop.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,16 +13,23 @@ public class Product extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "promotion_id")
+    @JsonBackReference
     private Promotion promotion;
 
-    @ManyToOne
-    @JoinColumn(name = "menu_id")
-    private Menu menu;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Menu> menus;
 
-    @OneToMany(mappedBy = "product")
-    private List<Category> categories;
-
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<ProductDetail> productDetails;
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<ProductCategory> productCategories;
+
+    private String name;
+
+    private boolean isActive;
 
 }

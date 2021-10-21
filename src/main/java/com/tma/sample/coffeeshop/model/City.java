@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -20,7 +17,7 @@ public class City extends BaseEntity {
 
     private String name;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<District> districts;
 }

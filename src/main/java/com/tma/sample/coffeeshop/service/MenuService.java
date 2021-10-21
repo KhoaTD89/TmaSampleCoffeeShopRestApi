@@ -1,21 +1,27 @@
 package com.tma.sample.coffeeshop.service;
 
-import com.tma.sample.coffeeshop.model.Product;
-import com.tma.sample.coffeeshop.model.ProductDetail;
+import com.tma.sample.coffeeshop.dto.ProductDTO;
 
 import java.util.List;
 
 public interface MenuService {
 
-    List<Product> getAllItemInAMenu();
 
-    ProductDetail getProductdetailFromMenu();
+    boolean addProductToMenu(long storeId, long productId);
+
+    List<ProductDTO> getAllProductOfAStore(long storeId);
+
+    ProductDTO getProductById(long productId);
+
+    boolean editProduct(long productId,ProductDTO productDTO);
+    boolean deleteProduct(long productId);
+
 
     boolean addCategory();
     boolean updateCategory();
     boolean deleteCategory();
 
-    boolean addProduct();
+    boolean createNewProduct(ProductDTO productDTO);
     boolean updateProduct();
     boolean deleteProduct();
 

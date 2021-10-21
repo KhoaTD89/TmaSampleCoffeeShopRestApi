@@ -1,6 +1,8 @@
 package com.tma.sample.coffeeshop.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -16,11 +18,16 @@ public class ProductDetail extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @JsonBackReference
     private Product product;
 
-    private LocalDate createdDate;
+    @CreationTimestamp
+    private LocalDateTime createdDate;
 
     private double price;
+    private String description;
+    private String imagePath;
 
+    private boolean isActive;
 
 }
