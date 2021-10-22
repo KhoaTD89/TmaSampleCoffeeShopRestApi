@@ -30,7 +30,14 @@ class StoreRepoTest {
     void testFindAddressByStoreId(){
         List<Address> byStoreId = addressRepository.findByStoreId(2);
         System.out.println(byStoreId.get(0).getId());
-        Assertions.assertTrue(byStoreId.size()==0);
+        Assertions.assertTrue(byStoreId.size()>0);
+    }
+
+    @Test
+    void findByCustomerId(){
+        List<Address> byStoreId = addressRepository.findByCustomerId(1);
+        System.out.println(byStoreId.get(0).getId());
+        Assertions.assertTrue(byStoreId.size()>0);
     }
 
 }

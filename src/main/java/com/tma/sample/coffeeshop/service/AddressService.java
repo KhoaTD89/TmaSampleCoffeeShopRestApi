@@ -13,6 +13,6 @@ public interface AddressService {
     AddressViewDTO getOne(long addressId);
     Address save(AddressDTO addressDTO);
     Address edit(long addressId,AddressDTO addressDTO);
-    boolean delete(long addressId);
+    void delete(long addressId);
 
 }

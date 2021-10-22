@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/stores")
 public class StoreRestController {
 
     @Autowired
     private StoreService storeService;
 
-    @GetMapping("/stores")
+    @GetMapping
     public List<StoreDTO> storeList(){
         return storeService.findAll();
     }
 
-    @GetMapping("/store/{id}")
-    public StoreDTO viewStoreDetail(@PathVariable long id){
-        StoreDTO storeDTO = storeService.viewStoreDetail(id);
+    @GetMapping("/{storeId}")
+    public StoreDTO viewStoreDetail(@PathVariable long storeId){
+        StoreDTO storeDTO = storeService.viewStoreDetail(storeId);
         return storeDTO;
     }
 
@@ -31,15 +31,15 @@ public class StoreRestController {
         storeService.save(storeDTO,addressId);
     }
 
-    @PutMapping("/store/{id}")
+    @PutMapping("/{storeId}")
     public void editStore(@RequestBody StoreDTO storeDTO
-            ,@PathVariable("id") long storeId
+            ,@PathVariable long storeId
             ,@RequestParam("addressId") long addressId){
         storeService.edit(storeId,storeDTO,addressId);
     }
 
-    @DeleteMapping("/store/{id}")
-    public void deleteStore(@PathVariable long id){
-        storeService.delete(id);
+    @DeleteMapping("/{storeId}")
+    public void deleteStore(@PathVariable long storeId){
+        storeService.delete(storeId);
     }
 }

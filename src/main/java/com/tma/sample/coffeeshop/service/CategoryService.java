@@ -12,5 +12,5 @@ public interface CategoryService {
 
     Category edit(long id, String name);
 
-    boolean delete(long id);
+    void delete(long id);
 }

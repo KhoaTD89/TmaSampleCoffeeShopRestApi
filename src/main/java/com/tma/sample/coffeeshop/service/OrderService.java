@@ -8,13 +8,5 @@ public interface OrderService {
 
     boolean createNewOrder(long customerId, long storeId);
 
-
-    /*
-    * @param
-    * orderId
-    * productId
-    * voucherId
-    * */
-    boolean addProductToOrder(OrderDetailPostDTO orderDatailDTO
-            , long orderId, long productId);
+    boolean addProductToOrder(OrderDetailPostDTO orderDatailDTO, long orderId, long productId);
 }

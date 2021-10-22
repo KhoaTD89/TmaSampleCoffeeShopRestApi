@@ -8,42 +8,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/menus")
 public class MenuRestController {
     @Autowired
     MenuService menuService;
 
-    @GetMapping("/product/{productId}")
-    public ProductDTO getProductById(@PathVariable("productId") long productId){
-        return menuService.getProductById(productId);
-    }
-    @PostMapping("/product")
-    public boolean createNewProduct(@RequestBody ProductDTO productDTO){
-        return menuService.createNewProduct(productDTO);
-    }
-
-    @PutMapping("/product/{productId}")
-    public boolean editProduct(@PathVariable("productId") long productId
-            ,@RequestBody ProductDTO productDTO){
-        return menuService.editProduct(productId,productDTO);
-    }
-
-    @DeleteMapping("/product/{productId}")
-    public boolean deleteProduct(@PathVariable("productId") long productId){
-        return menuService.deleteProduct(productId);
-    }
-
-    @PostMapping("/{storeId}/{productId}")
-    public boolean addProductToMenu(@PathVariable("storeId") long storeId,
-                                    @PathVariable("productId") long productId){
+    @PostMapping("/store/{storeId}/product/{productId}")
+    public boolean addProductToMenu(@PathVariable long storeId,
+                                    @PathVariable long productId){
         return menuService.addProductToMenu(storeId, productId);
     }
 
-    @GetMapping("/store/products")
-    public List<ProductDTO> getProductsOfAStore(long storeId){
+    @GetMapping("/store/{storeId}")
+    public List<ProductDTO> getProductsOfAStore(@PathVariable long storeId){
         return menuService.getAllProductOfAStore(storeId);
     }
-
-
 
 }

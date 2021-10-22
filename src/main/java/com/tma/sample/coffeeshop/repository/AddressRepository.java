@@ -11,12 +11,11 @@ import java.util.List;
 
 public interface AddressRepository extends JpaRepository<Address,Long> {
 
-    @Query(value = "select A from Address  as  A where A.store.id=:storeId")
-    List<Address> findByStoreId(@Param("storeId") long storeId);
+    //Conventional query
+    List<Address> findByStoreId(long storeId);
 
-
-    @Query(value = "select A from Address  as  A where A.customer.id=:customerId")
-    List<Address> findByCustomerId(@Param("customerId") long customerId);
+    //Conventional query
+    List<Address> findByCustomerId( long customerId);
 
 
 }

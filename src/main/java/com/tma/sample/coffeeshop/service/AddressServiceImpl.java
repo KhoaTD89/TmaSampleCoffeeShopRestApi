@@ -5,6 +5,9 @@ import com.tma.sample.coffeeshop.dto.AddressViewDTO;
 import com.tma.sample.coffeeshop.mapper.AddressMapper;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.repository.AddressRepository;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +15,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Log4j2
 public class AddressServiceImpl implements AddressService{
+
     @Autowired
     AddressRepository addressRepository;
 
@@ -27,6 +32,7 @@ public class AddressServiceImpl implements AddressService{
         List<Address> addresses = addressRepository.findByCustomerId(customerId);
         List<AddressViewDTO> addressViewDTOS = addresses.stream().map(address -> addressMapper.map(address))
                 .collect(Collectors.toList());
+
         return addressViewDTOS;
     }
 
@@ -49,20 +55,24 @@ public class AddressServiceImpl implements AddressService{
 
     @Override
     public Address edit(long addressId, AddressDTO addressDTO) {
-        Address address = addressRepository.findById(addressId).orElse(null);
-        if(address!=null){
-            address = addressMapper.map(addressDTO);
+        try {
+            Address address = addressRepository.findById(addressId).orElse(null);
+            if (address != null) {
+                address = addressMapper.map(addressDTO);
+            } else {
+//                LOGGER.error("null object");
+            }
+            address.setId(addressId);
+            return addressRepository.save(address);
+
+        }catch(Exception e ){
+            log.error("Address is not found",e);
+            return null;
         }
-        address.setId(addressId);
-        return addressRepository.save(address);
     }
 
     @Override
-    public boolean delete(long addressId) {
-        Address address = addressRepository.findById(addressId).orElse(null);
-        if(address!=null){
-            addressRepository.delete(address);
-        }
-        return true;
+    public void delete(long addressId) {
+        addressRepository.deleteById(addressId);
     }
 }

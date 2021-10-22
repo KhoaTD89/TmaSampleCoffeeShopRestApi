@@ -11,6 +11,8 @@ import java.util.List;
 @Transactional
 public interface MenuRepository extends JpaRepository<Menu,Long> {
 
+    //conventional query only return Menu --> expected Product
+    //use HQL instead
     @Query("SELECT m.product FROM Menu m WHERE m.store.id=:storeId order by m.product.name")
     List<Product> findProductsOfAStore(@Param("storeId") long storeId);
 

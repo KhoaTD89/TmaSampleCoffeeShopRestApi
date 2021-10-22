@@ -10,31 +10,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping({"/admin"})
+@RequestMapping({"/admin/addresses"})
 public class AddressRestController {
     @Autowired
     private AddressService addressService;
 
-    @GetMapping("/{customerId}/addresses")
-    public List<AddressViewDTO> getAllAddressesOfCustomer(@PathVariable("customerId") long customerId){
+    @GetMapping("/{customerId}")
+    public List<AddressViewDTO> getAllAddressesOfCustomer(@PathVariable long customerId){
         return addressService.getAllAddressesOfCustomer(customerId);
     }
 
-    @PostMapping("/address")
+    @PostMapping
     public Address addAddress(AddressDTO addressDTO){
         return addressService.save(addressDTO);
     }
 
-    @PutMapping("/address/{addressId}")
-    public Address addAddress(@PathVariable("addressId") long addressId,
+    @PutMapping("/{addressId}")
+    public Address editAddress(@PathVariable long addressId,
                               AddressDTO addressDTO){
         return addressService.edit(addressId,addressDTO);
     }
 
-    @DeleteMapping("/address/{addressId}")
-    public boolean deleteAddress(@PathVariable("addressId") long addressId){
-        return addressService.delete(addressId);
+    @DeleteMapping("/{addressId}")
+    public void deleteAddress(@PathVariable long addressId){
+         addressService.delete(addressId);
     }
-
 
 }

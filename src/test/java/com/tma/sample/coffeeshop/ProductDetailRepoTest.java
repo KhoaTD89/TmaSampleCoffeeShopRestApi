@@ -19,20 +19,39 @@ import java.util.List;
 class ProductDetailRepoTest {
     @Autowired
     ProductDetailRepository productDetailRepository;
+
     @Autowired
     ProductReposiroty productReposiroty;
 
+    ProductDetail productDetail;
+    List<ProductDetail> productDetailsRet;
+
     @Test
     void testFindAddressByStoreId(){
-        ProductDetail productDetail = ProductDetail.builder()
+        given: setupProductDetails();
+        and: insertOneProductDetails();
+        when: findByProductIdAndSizeIsCalled();
+        then: verifyActualProductDetailsRetContainsOne();
+    }
+
+    private void verifyActualProductDetailsRetContainsOne() {
+        Assertions.assertEquals(productDetailsRet.get(0).getPrice(),94);
+    }
+
+    private void findByProductIdAndSizeIsCalled() {
+        productDetailsRet = productDetailRepository.findByProductIdAndSizeOrderByCreatedDateDesc(1, ProductSize.M);
+    }
+
+    private void insertOneProductDetails() {
+        productDetailRepository.save(productDetail);
+    }
+
+    private void setupProductDetails() {
+        productDetail = ProductDetail.builder()
                 .product(productReposiroty.getById(1L))
                 .price(94)
                 .size(ProductSize.M)
                 .build();
-        productDetailRepository.save(productDetail);
-
-        List<ProductDetail> var = productDetailRepository.findByProductIdAndSize(1, ProductSize.M);
-        Assertions.assertEquals(var.get(0).getPrice(),94);
     }
 
 }

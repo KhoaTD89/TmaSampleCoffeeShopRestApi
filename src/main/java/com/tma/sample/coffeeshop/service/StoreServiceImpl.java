@@ -59,16 +59,26 @@ public class StoreServiceImpl implements StoreService {
         Store store = storeRepository.findById(storeId).orElse(null);
         if (store == null) return null;
 
-        Address oldAddress = addressRepository.findByStoreId(storeId).get(0);
+        //find old address
+        List<Address> addresses = addressRepository.findByStoreId(storeId);
+        Address oldAddress;
+        if (addresses.size() > 0) {
+            oldAddress= addresses.get(0);
+        } else {
+            oldAddress = null;
+        }
 
+        //save the store
         store = storeMapper.map(storeDTO);
         store.setId(storeId);
         storeRepository.save(store);
 
+        //set store for new address
         Address address = addressRepository.findById(addressId).orElse(null);
         address.setStore(storeRepository.findById(store.getId()).orElse(null));
         addressRepository.save(address);
 
+        //remove store field of old address
         if (oldAddress != null) {
             oldAddress.setStore(null);
         }
@@ -76,17 +86,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public boolean delete(long storeId) {
-        Address oldAddress = addressRepository.findByStoreId(storeId).get(0);
-
-        Store store = storeRepository.findById(storeId).orElse(null);
-        if (store != null) {
-            storeRepository.delete(store);
-        }
-
-        if (oldAddress != null) {
-            oldAddress.setStore(null);
-        }
-        return true;
+    public void delete(long storeId) {
+        storeRepository.deleteById(storeId);
     }
 }

@@ -35,10 +35,8 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<ProductDTO> getAllProductOfAStore(long storeId) {
-        List<Product> products = menuRepository.findProductsOfAStore(storeId);
-        List<ProductDTO> productDTOS = products.stream().map(product -> productMapper.map(product))
+        return menuRepository.findProductsOfAStore(storeId).stream().map(productMapper::map)
                 .collect(Collectors.toList());
-        return productDTOS;
     }
 
     @Override
@@ -83,27 +81,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public boolean deleteProduct(long productId) {
-        Product product = productReposiroty.findById(productId).orElse(null);
-        if (product == null) return false;
-        productReposiroty.delete(product);
-        return true;
-    }
-
-
-    @Override
-    public boolean addCategory() {
-        return false;
-    }
-
-    @Override
-    public boolean updateCategory() {
-        return false;
-    }
-
-    @Override
-    public boolean deleteCategory() {
-        return false;
+    public void deleteProduct(long productId) {
+        productReposiroty.deleteById(productId);
     }
 
     @Override
@@ -153,13 +132,4 @@ public class MenuServiceImpl implements MenuService {
         return false;
     }
 
-    @Override
-    public boolean updateProduct() {
-        return false;
-    }
-
-    @Override
-    public boolean deleteProduct() {
-        return false;
-    }
 }

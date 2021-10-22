@@ -17,4 +17,8 @@ public interface ProductDetailRepository extends JpaRepository<ProductDetail,Lon
     List<ProductDetail> findByProductIdAndSize(@Param("productId") long productId
     , @Param("size") ProductSize size);
 
+
+    //Altenative option for above
+    List<ProductDetail> findByProductIdAndSizeOrderByCreatedDateDesc(long productId, ProductSize size);
+
 }

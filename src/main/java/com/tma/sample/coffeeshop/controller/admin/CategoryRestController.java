@@ -8,28 +8,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/categories")
 public class CategoryRestController {
     @Autowired
     CategoryService categoryService;
 
-    @GetMapping("/categories")
-    public List<Category> getAll(){
+    @GetMapping
+    public List<Category> getAllCategory(){
         return categoryService.getAll();
     }
 
-    @PostMapping ("/category")
-    public Category add(@RequestBody String name){
+    @PostMapping
+    public Category addCategory(@RequestBody String name){
         return categoryService.add(name);
     }
 
-    @PutMapping ("/category/{id}")
-    public Category add(@RequestBody String name, @PathVariable long id){
-        return categoryService.edit(id,name);
+    @PutMapping ("/{categoryId}")
+    public Category editCategory(@RequestBody String name, @PathVariable long categoryId){
+        return categoryService.edit(categoryId,name);
     }
 
-    @DeleteMapping("/category/{id}")
-    public boolean delete(@PathVariable long id){
-        return categoryService.delete(id);
+    @DeleteMapping("/{categoryId}")
+    public void deleteCategory(@PathVariable long categoryId){
+         categoryService.delete(categoryId);
     }
 }

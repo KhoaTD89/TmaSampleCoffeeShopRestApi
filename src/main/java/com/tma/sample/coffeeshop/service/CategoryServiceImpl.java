@@ -38,14 +38,8 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public boolean delete(long id) {
-        Category category = categoryRepository.findById(id).orElse(null);
-        if (category==null){
-            throw new NullPointerException("category is not found");
-        }else{
-            categoryRepository.delete(category);
-            return true;
-        }
+    public void delete(long id) {
+            categoryRepository.deleteById(id);
 
     }
 }

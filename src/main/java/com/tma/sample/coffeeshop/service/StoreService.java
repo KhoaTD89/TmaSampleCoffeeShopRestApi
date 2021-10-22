@@ -13,5 +13,5 @@ public interface StoreService {
     StoreDTO viewStoreDetail(long id);
     Store save(StoreDTO storeDTO,long addressId);
     Store edit(long storeId,StoreDTO storeDTO,long addressId);
-    boolean delete(long storeId);
+    void delete(long storeId);
 }

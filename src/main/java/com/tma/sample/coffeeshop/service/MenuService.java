@@ -14,16 +14,11 @@ public interface MenuService {
     ProductDTO getProductById(long productId);
 
     boolean editProduct(long productId,ProductDTO productDTO);
-    boolean deleteProduct(long productId);
 
-
-    boolean addCategory();
-    boolean updateCategory();
-    boolean deleteCategory();
+    void deleteProduct(long productId);
 
     boolean createNewProduct(ProductDTO productDTO);
-    boolean updateProduct();
-    boolean deleteProduct();
+
 
 
 
