@@ -9,7 +9,9 @@ import java.util.List;
 public interface AddressService {
 
     List<AddressViewDTO> getAllAddressesOfCustomer(long customerId);
-    List<AddressViewDTO> getAllAddressesOfStore();
+
+    List<AddressViewDTO> getAllAddressesOfStore(long storeId);
+
     AddressViewDTO getOne(long addressId);
     Address save(AddressDTO addressDTO);
     Address edit(long addressId,AddressDTO addressDTO);

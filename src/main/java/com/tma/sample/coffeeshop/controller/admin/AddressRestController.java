@@ -15,9 +15,19 @@ public class AddressRestController {
     @Autowired
     private AddressService addressService;
 
-    @GetMapping("/{customerId}")
+    @GetMapping("/{addressId}")
+    public AddressViewDTO getAddressbyId(@PathVariable long addressId){
+        return addressService.getOne(addressId);
+    }
+
+    @GetMapping("/customer/{customerId}")
     public List<AddressViewDTO> getAllAddressesOfCustomer(@PathVariable long customerId){
         return addressService.getAllAddressesOfCustomer(customerId);
+    }
+
+    @GetMapping("/store/{storeId}")
+    public List<AddressViewDTO> getAllAddressesOfStore(@PathVariable long storeId){
+        return addressService.getAllAddressesOfStore(storeId);
     }
 
     @PostMapping
@@ -28,6 +38,7 @@ public class AddressRestController {
     @PutMapping("/{addressId}")
     public Address editAddress(@PathVariable long addressId,
                               AddressDTO addressDTO){
+
         return addressService.edit(addressId,addressDTO);
     }
 

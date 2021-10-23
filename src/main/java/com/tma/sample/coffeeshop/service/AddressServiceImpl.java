@@ -2,6 +2,7 @@ package com.tma.sample.coffeeshop.service;
 
 import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;
+import com.tma.sample.coffeeshop.exception.ResourceNotFoundException;
 import com.tma.sample.coffeeshop.mapper.AddressMapper;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.repository.AddressRepository;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Log4j2
-public class AddressServiceImpl implements AddressService{
+public class AddressServiceImpl implements AddressService {
 
     @Autowired
     AddressRepository addressRepository;
@@ -29,21 +30,21 @@ public class AddressServiceImpl implements AddressService{
 
     @Override
     public List<AddressViewDTO> getAllAddressesOfCustomer(long customerId) {
-        List<Address> addresses = addressRepository.findByCustomerId(customerId);
-        List<AddressViewDTO> addressViewDTOS = addresses.stream().map(address -> addressMapper.map(address))
+        return addressRepository.findByCustomerId(customerId).stream().map(addressMapper::map)
                 .collect(Collectors.toList());
-
-        return addressViewDTOS;
     }
 
     @Override
-    public List<AddressViewDTO> getAllAddressesOfStore() {
-        return null;
+    public List<AddressViewDTO> getAllAddressesOfStore(long storeId) {
+        return addressRepository.findByStoreId(storeId).stream().map(addressMapper::map)
+                .collect(Collectors.toList());
     }
 
     @Override
     public AddressViewDTO getOne(long addressId) {
-        return null;
+        Address address = addressRepository
+                .findById(addressId).orElseThrow(() -> new ResourceNotFoundException("not found address with Id=" + addressId));
+        return addressMapper.map(address);
     }
 
     @Override
@@ -55,20 +56,11 @@ public class AddressServiceImpl implements AddressService{
 
     @Override
     public Address edit(long addressId, AddressDTO addressDTO) {
-        try {
-            Address address = addressRepository.findById(addressId).orElse(null);
-            if (address != null) {
-                address = addressMapper.map(addressDTO);
-            } else {
-//                LOGGER.error("null object");
-            }
-            address.setId(addressId);
-            return addressRepository.save(address);
-
-        }catch(Exception e ){
-            log.error("Address is not found",e);
-            return null;
-        }
+        //check if null
+        addressRepository.findById(addressId).orElseThrow(() -> new ResourceNotFoundException("not found address with Id=" + addressId));
+        Address address = addressMapper.map(addressDTO);
+        address.setId(addressId);
+        return addressRepository.save(address);
     }
 
     @Override
