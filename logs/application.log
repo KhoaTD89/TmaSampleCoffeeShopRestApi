@@ -317,3 +317,13 @@ java.util.NoSuchElementException: No value present
 2021-10-23T23:28:18.608+0700 INFO for informational purpose
 2021-10-23T23:28:18.608+0700 WARN for warning purpose
 2021-10-23T23:28:18.608+0700 ERROR for logging errors
+2021-10-24T06:44:53.822+0700 ERROR not found address with Id=1
+2021-10-24T06:45:23.567+0700 ERROR not found address with Id=123
+2021-10-24T06:45:34.366+0700 ERROR not found address with Id=123344
+2021-10-24T06:45:48.716+0700 ERROR not found address with Id=123344
+2021-10-24T06:45:48.879+0700 ERROR No handler found for GET /favicon.ico
+2021-10-24T06:45:56.901+0700 ERROR not found address with Id=12
+2021-10-24T06:46:36.013+0700 ERROR No handler found for GET /admin/addres
+2021-10-24T06:48:42.230+0700 ERROR not found address with Id=123344
+2021-10-24T17:12:33.561+0700 ERROR No handler found for GET /login
+2021-10-24T17:12:41.647+0700 ERROR No handler found for GET /login

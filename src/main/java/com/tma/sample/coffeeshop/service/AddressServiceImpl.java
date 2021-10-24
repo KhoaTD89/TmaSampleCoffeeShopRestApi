@@ -7,8 +7,6 @@ import com.tma.sample.coffeeshop.mapper.AddressMapper;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.repository.AddressRepository;
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Log4j2
+
 public class AddressServiceImpl implements AddressService {
 
     @Autowired
@@ -42,8 +40,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public AddressViewDTO getOne(long addressId) {
-        Address address = addressRepository
-                .findById(addressId).orElseThrow(() -> new ResourceNotFoundException("not found address with Id=" + addressId));
+        Address address = checkNullAddressById(addressId);
         return addressMapper.map(address);
     }
 
@@ -57,7 +54,8 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public Address edit(long addressId, AddressDTO addressDTO) {
         //check if null
-        addressRepository.findById(addressId).orElseThrow(() -> new ResourceNotFoundException("not found address with Id=" + addressId));
+        checkNullAddressById(addressId);
+        //set address and save
         Address address = addressMapper.map(addressDTO);
         address.setId(addressId);
         return addressRepository.save(address);
@@ -65,6 +63,12 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public void delete(long addressId) {
+        checkNullAddressById(addressId);
         addressRepository.deleteById(addressId);
+    }
+
+    public Address checkNullAddressById(long addressId){
+        return addressRepository
+                .findById(addressId).orElseThrow(() -> new ResourceNotFoundException("not found address with Id=" + addressId));
     }
 }

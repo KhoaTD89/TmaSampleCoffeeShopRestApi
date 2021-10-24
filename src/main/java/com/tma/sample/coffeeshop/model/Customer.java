@@ -15,6 +15,7 @@ public class Customer extends BaseEntity{
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
+    @Column(unique = true)
     private String email;
     private String grade;
 
