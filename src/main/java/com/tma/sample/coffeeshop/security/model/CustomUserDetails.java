@@ -1,22 +1,21 @@
-package com.tma.sample.coffeeshop.domain;
+package com.tma.sample.coffeeshop.security.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
 
-@Data
 @AllArgsConstructor
-public class CustomUserDetails  implements UserDetails {
+@NoArgsConstructor
+
+public class CustomUserDetails implements UserDetails {
     User user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+        return null;
     }
 
     @Override
@@ -26,7 +25,7 @@ public class CustomUserDetails  implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return user.getEmail();
     }
 
     @Override
@@ -48,4 +47,11 @@ public class CustomUserDetails  implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public String getFullName(){
+        return user.getFirstName()+" "+ user.getLastName();
+    }
 }
+
+
+//public class CustomUserDetails{}
