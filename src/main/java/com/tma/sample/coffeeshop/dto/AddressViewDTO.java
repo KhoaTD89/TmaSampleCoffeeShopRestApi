@@ -19,4 +19,7 @@ public class AddressViewDTO {
     private String district;
     private String city;
 
+    public AddressViewDTO(long id) {
+        this.id = id;
+    }
 }

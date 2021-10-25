@@ -3,6 +3,7 @@ package com.tma.sample.coffeeshop.mapper;
 import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;
 import com.tma.sample.coffeeshop.dto.StoreDTO;
+import com.tma.sample.coffeeshop.exception.ResourceNotFoundException;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.model.Store;
 import com.tma.sample.coffeeshop.model.Ward;
@@ -25,23 +26,28 @@ public abstract class AddressMapper {
     private WardReposiroty wardReposiroty;
 
 
-    @Mapping(target = "id",source = "address.id")
-    @Mapping(target = "description",source = "address.description")
-    @Mapping(target = "building",source = "address.building")
-    @Mapping(target = "gate",source = "address.gate")
-    @Mapping(target = "ward",source = "address.ward.name")
-    @Mapping(target = "district",source = "address.ward.district.name")
-    @Mapping(target = "city",source = "address.ward.district.city.name")
+    @Mapping(target = "id", source = "address.id")
+    @Mapping(target = "description", source = "address.description")
+    @Mapping(target = "building", source = "address.building")
+    @Mapping(target = "gate", source = "address.gate")
+    @Mapping(target = "ward", source = "address.ward.name")
+    @Mapping(target = "district", source = "address.ward.district.name")
+    @Mapping(target = "city", source = "address.ward.district.city.name")
     public abstract AddressViewDTO map(Address address);
 
-    @Mapping(target = "description",source = "addressDTO.description")
-    @Mapping(target = "building",source = "addressDTO.building")
-    @Mapping(target = "gate",source = "addressDTO.gate")
+    @Mapping(target = "description", source = "addressDTO.description")
+    @Mapping(target = "building", source = "addressDTO.building")
+    @Mapping(target = "gate", source = "addressDTO.gate")
     public abstract Address map(AddressDTO addressDTO);
+
     @AfterMapping
-    void after(@MappingTarget Address target, AddressDTO src){
-        Ward ward = wardReposiroty.findById(src.getWardId()).orElse(null);
-        target.setWard(ward);
+    void after(@MappingTarget Address target, AddressDTO src) {
+        try {
+            Ward ward = wardReposiroty.findById(src.getWardId()).orElse(null);
+            target.setWard(ward);
+        } catch (Exception e) {
+
+        }
     }
 
 

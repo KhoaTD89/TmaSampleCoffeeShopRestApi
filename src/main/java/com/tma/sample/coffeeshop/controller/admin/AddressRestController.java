@@ -36,10 +36,10 @@ public class AddressRestController {
     }
 
     @PutMapping("/{addressId}")
-    public Address editAddress(@PathVariable long addressId,
+    public boolean editAddress(@PathVariable long addressId,
                               AddressDTO addressDTO){
-
-        return addressService.edit(addressId,addressDTO);
+        addressService.edit(addressId,addressDTO);
+        return true;
     }
 
     @DeleteMapping("/{addressId}")

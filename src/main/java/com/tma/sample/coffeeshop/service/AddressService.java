@@ -14,7 +14,7 @@ public interface AddressService {
 
     AddressViewDTO getOne(long addressId);
     Address save(AddressDTO addressDTO);
-    Address edit(long addressId,AddressDTO addressDTO);
+    boolean edit(long addressId,AddressDTO addressDTO);
     void delete(long addressId);
 
 }

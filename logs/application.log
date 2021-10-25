@@ -342,3 +342,8 @@ java.util.NoSuchElementException: No value present
 2021-10-25T08:14:14.884+0700 ERROR will change later
 2021-10-25T08:14:26.002+0700 ERROR will change later
 2021-10-25T08:16:52.579+0700 ERROR No handler found for GET /admin/stor
+2021-10-25T08:26:06.540+0700 ERROR will change later
+2021-10-25T08:26:27.969+0700 ERROR No handler found for POST /customer/stores
+2021-10-25T08:26:35.370+0700 ERROR No handler found for POST /customer/storesasdf
+2021-10-25T08:27:59.309+0700 ERROR No handler found for POST /customer/stores/store/1/customer/1
+2021-10-25T14:36:30.094+0700 ERROR not found address with Id=1

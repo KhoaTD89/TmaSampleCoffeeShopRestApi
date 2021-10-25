@@ -6,7 +6,6 @@ import com.tma.sample.coffeeshop.exception.ResourceNotFoundException;
 import com.tma.sample.coffeeshop.mapper.AddressMapper;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.repository.AddressRepository;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,13 +51,14 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address edit(long addressId, AddressDTO addressDTO) {
+    public boolean edit(long addressId, AddressDTO addressDTO) {
         //check if null
         checkNullAddressById(addressId);
         //set address and save
         Address address = addressMapper.map(addressDTO);
         address.setId(addressId);
-        return addressRepository.save(address);
+        addressRepository.save(address);
+        return true;
     }
 
     @Override

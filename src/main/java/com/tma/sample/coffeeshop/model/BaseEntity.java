@@ -1,5 +1,6 @@
 package com.tma.sample.coffeeshop.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.GeneratedValue;
@@ -15,4 +16,6 @@ public class BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+
 }

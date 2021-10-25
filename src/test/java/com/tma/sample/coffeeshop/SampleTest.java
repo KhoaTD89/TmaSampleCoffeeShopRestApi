@@ -19,19 +19,28 @@ import java.util.List;
 class ProductDetailRepoTest {
     @Autowired
     ProductDetailRepository productDetailRepository;
-
     @Autowired
     ProductReposiroty productReposiroty;
 
     ProductDetail productDetail;
+
     List<ProductDetail> productDetailsRet;
 
     @Test
     void testFindAddressByStoreId(){
         given: setupProductDetails();
         and: insertOneProductDetails();
+
         when: findByProductIdAndSizeIsCalled();
+
+
         then: verifyActualProductDetailsRetContainsOne();
+
+    }
+
+    @Test
+    public void anotherTest(){
+
     }
 
     private void verifyActualProductDetailsRetContainsOne() {
@@ -39,7 +48,7 @@ class ProductDetailRepoTest {
     }
 
     private void findByProductIdAndSizeIsCalled() {
-        productDetailsRet = productDetailRepository.findByProductIdAndSizeOrderByCreatedDateDesc(1, ProductSize.M);
+        productDetailsRet = productDetailRepository.findByProductIdAndSize(1, ProductSize.M);
     }
 
     private void insertOneProductDetails() {

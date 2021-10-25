@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class Address extends BaseEntity{
     private String description;
     private String building;
@@ -39,7 +40,13 @@ public class Address extends BaseEntity{
     @RestResource(rel = "store")
     private Store store;
 
-    public Address() {
+    public Address(long id) {
+        super.getId();
+    }
 
+    public Address(String description, String building, String gate) {
+        this.description = description;
+        this.building = building;
+        this.gate = gate;
     }
 }
