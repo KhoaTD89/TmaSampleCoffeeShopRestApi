@@ -31,13 +31,13 @@ public class AddressRestController {
     }
 
     @PostMapping
-    public Address addAddress(AddressDTO addressDTO){
+    public Address addAddress(@RequestBody AddressDTO addressDTO){
         return addressService.save(addressDTO);
     }
 
     @PutMapping("/{addressId}")
     public boolean editAddress(@PathVariable long addressId,
-                              AddressDTO addressDTO){
+                               @RequestBody AddressDTO addressDTO){
         addressService.edit(addressId,addressDTO);
         return true;
     }
