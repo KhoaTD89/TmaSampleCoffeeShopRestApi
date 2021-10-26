@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.service;
+package com.tma.sample.coffeeshop.unittest.service;
 
 import com.tma.sample.coffeeshop.dto.ProductDTO;
 

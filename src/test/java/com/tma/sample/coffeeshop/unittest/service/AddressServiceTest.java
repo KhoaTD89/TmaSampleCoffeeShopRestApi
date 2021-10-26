@@ -1,12 +1,10 @@
-package com.tma.sample.coffeeshop.service;
+package com.tma.sample.coffeeshop.unittest.service;
 
 import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;
-import com.tma.sample.coffeeshop.exception.ResourceNotFoundException;
 import com.tma.sample.coffeeshop.mapper.AddressMapper;
 import com.tma.sample.coffeeshop.mapper.AddressMapperImpl;
 import com.tma.sample.coffeeshop.model.Address;
-import com.tma.sample.coffeeshop.model.Ward;
 import com.tma.sample.coffeeshop.repository.AddressRepository;
 import com.tma.sample.coffeeshop.repository.WardReposiroty;
 import org.junit.Before;

@@ -1,7 +1,7 @@
-package com.tma.sample.coffeeshop.controller.admin;
+package com.tma.sample.coffeeshop.unittest.controller.admin;
 
 import com.tma.sample.coffeeshop.dto.StoreDTO;
-import com.tma.sample.coffeeshop.service.StoreService;
+import com.tma.sample.coffeeshop.unittest.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;

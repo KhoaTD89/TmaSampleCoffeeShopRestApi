@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop;
+package com.tma.sample.coffeeshop.unittest;
 
 import com.tma.sample.coffeeshop.enums.ProductSize;
 import com.tma.sample.coffeeshop.model.Address;
@@ -30,12 +30,8 @@ class ProductDetailRepoTest {
     void testFindAddressByStoreId(){
         given: setupProductDetails();
         and: insertOneProductDetails();
-
         when: findByProductIdAndSizeIsCalled();
-
-
         then: verifyActualProductDetailsRetContainsOne();
-
     }
 
     @Test

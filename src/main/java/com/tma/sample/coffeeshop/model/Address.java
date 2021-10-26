@@ -49,4 +49,5 @@ public class Address extends BaseEntity{
         this.building = building;
         this.gate = gate;
     }
+
 }

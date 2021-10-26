@@ -1,8 +1,6 @@
-package com.tma.sample.coffeeshop.service;
+package com.tma.sample.coffeeshop.unittest.service;
 
-import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.StoreDTO;
-import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.model.Store;
 
 import java.util.List;

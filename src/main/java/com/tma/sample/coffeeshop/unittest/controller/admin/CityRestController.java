@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.controller.admin;
+package com.tma.sample.coffeeshop.unittest.controller.admin;
 
 import com.tma.sample.coffeeshop.dto.CityDTO;
 import com.tma.sample.coffeeshop.model.City;

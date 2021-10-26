@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.service;
+package com.tma.sample.coffeeshop.unittest.service;
 
 import com.tma.sample.coffeeshop.dto.OrderDetailPostDTO;
 import com.tma.sample.coffeeshop.enums.OrderStatus;
@@ -6,11 +6,9 @@ import com.tma.sample.coffeeshop.enums.ProductSize;
 import com.tma.sample.coffeeshop.model.ExtraOption;
 import com.tma.sample.coffeeshop.model.Order;
 import com.tma.sample.coffeeshop.model.OrderDetail;
-import com.tma.sample.coffeeshop.model.Product;
 import com.tma.sample.coffeeshop.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
 
