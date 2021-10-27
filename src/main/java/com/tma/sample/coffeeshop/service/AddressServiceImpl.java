@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.unittest.service;
+package com.tma.sample.coffeeshop.service;
 
 import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;
@@ -7,6 +7,8 @@ import com.tma.sample.coffeeshop.mapper.AddressMapper;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +23,7 @@ public class AddressServiceImpl implements AddressService {
 
     private final AddressMapper addressMapper;
 
+
     public AddressServiceImpl(AddressMapper addressMapper) {
         this.addressMapper = addressMapper;
     }
@@ -28,6 +31,13 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public List<AddressViewDTO> getAllAddressesOfCustomer(long customerId) {
         return addressRepository.findByCustomerId(customerId).stream().map(addressMapper::map)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AddressViewDTO> testGetAllAddressesOfCustomer(long customerId, int num, int qty) {
+        Pageable addressPage = PageRequest.of(num,qty);
+        return addressRepository.findByCustomerId(customerId, addressPage).stream().map(addressMapper::map)
                 .collect(Collectors.toList());
     }
 

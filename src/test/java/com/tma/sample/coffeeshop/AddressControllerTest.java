@@ -1,11 +1,11 @@
-package com.tma.sample.coffeeshop.unittest.controller;
+package com.tma.sample.coffeeshop;
 
+import com.tma.sample.coffeeshop.controller.admin.AddressRestController;
 import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.security.repo.UserRepository;
-import com.tma.sample.coffeeshop.unittest.controller.admin.AddressRestController;
-import com.tma.sample.coffeeshop.unittest.service.AddressService;
+import com.tma.sample.coffeeshop.service.AddressService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -64,7 +64,7 @@ public class AddressControllerTest {
         //willreturn: any mock data
         given(addressService.getAllAddressesOfCustomer(CUSTOMER_ID)).willReturn(addressViewDTOS);
 
-        //test the controller
+        //com.tma.sample.test the controller
         mockMvc.perform(MockMvcRequestBuilders.get("/admin/addresses/customer/"+CUSTOMER_ID)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

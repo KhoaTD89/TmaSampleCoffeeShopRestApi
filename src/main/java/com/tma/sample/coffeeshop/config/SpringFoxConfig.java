@@ -17,7 +17,7 @@ public class SpringFoxConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.tma.sample.coffeeshop.unittest.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.tma.sample.coffeeshop.controller"))
                 .paths(PathSelectors.ant("/admin/**")
                         .or(Pattern.compile("/customer/*").asPredicate()))
                 .build();

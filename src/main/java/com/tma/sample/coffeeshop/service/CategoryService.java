@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.unittest.service;
+package com.tma.sample.coffeeshop.service;
 
 import com.tma.sample.coffeeshop.model.Category;
 
