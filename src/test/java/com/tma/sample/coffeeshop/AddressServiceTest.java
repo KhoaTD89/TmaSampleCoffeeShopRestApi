@@ -115,7 +115,7 @@ public class AddressServiceTest {
         verifyEditStatusIsTrue();
     }
 
-    //sub processes which is used in @test method
+    //sub processes which is used in @com.tma.sample.test method
     public void findAddressByCustomer(long customerId) {
         addressesOfCustomer = addressService.getAllAddressesOfCustomer(customerId);
     }

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @Log4j2
-@PropertySource("classpath:application-mysql.properties")
+@PropertySource("classpath:application-H2.properties")
 public class CoffeeShopApplication {
 
     public static void main(String[] args) {

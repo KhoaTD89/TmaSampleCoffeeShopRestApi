@@ -21,8 +21,8 @@ values (1, 'Ben Nghe', 1),
 
 insert
 into store(close_time, description, image_path, name, open_time, phone)
-values ('21:00', 'test desc', 'img/store1.jpg', 'CFH 84 Hoang Sa', '09:00', '123123123'),
-       ('21:00', 'test desc', 'img/store2.jpg', '23 Han Thuyen', '09:00', '123123123');
+values ('21:00', 'com.tma.sample.coffeeshop desc', 'img/store1.jpg', 'CFH 84 Hoang Sa', '09:00', '123123123'),
+       ('21:00', 'com.tma.sample.coffeeshop desc', 'img/store2.jpg', '23 Han Thuyen', '09:00', '123123123');
 
 insert into customer(first_name, username)
 values ('Khoa tran', 'KhoaTD'),
