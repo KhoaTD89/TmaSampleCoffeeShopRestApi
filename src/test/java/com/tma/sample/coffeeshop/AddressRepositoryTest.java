@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.unittest.jpa;
+package com.tma.sample.coffeeshop;
 
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.repository.AddressRepository;

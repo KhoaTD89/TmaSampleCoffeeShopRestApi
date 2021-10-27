@@ -1,9 +1,9 @@
-package com.tma.sample.coffeeshop.unittest.controller.admin;
+package com.tma.sample.coffeeshop.controller.admin;
 
 import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;
 import com.tma.sample.coffeeshop.model.Address;
-import com.tma.sample.coffeeshop.unittest.service.AddressService;
+import com.tma.sample.coffeeshop.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

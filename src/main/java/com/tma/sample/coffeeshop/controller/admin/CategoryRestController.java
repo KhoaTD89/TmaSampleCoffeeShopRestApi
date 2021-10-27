@@ -1,7 +1,7 @@
-package com.tma.sample.coffeeshop.unittest.controller.admin;
+package com.tma.sample.coffeeshop.controller.admin;
 
 import com.tma.sample.coffeeshop.model.Category;
-import com.tma.sample.coffeeshop.unittest.service.CategoryService;
+import com.tma.sample.coffeeshop.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -17,8 +17,8 @@
 2021-10-23T22:43:27.119+0700 ERROR Address is not found
 java.util.NoSuchElementException: No value present
 	at java.base/java.util.Optional.orElseThrow(Optional.java:377) ~[?:?]
-	at com.tma.sample.coffeeshop.unittest.service.AddressServiceImpl.edit(AddressServiceImpl.java:60) [classes/:?]
-	at com.tma.sample.coffeeshop.unittest.controller.admin.AddressRestController.editAddress(AddressRestController.java:32) [classes/:?]
+	at AddressServiceImpl.edit(AddressServiceImpl.java:60) [classes/:?]
+	at com.tma.sample.coffeeshop.controller.admin.AddressRestController.editAddress(AddressRestController.java:32) [classes/:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[?:?]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
@@ -76,8 +76,8 @@ java.util.NoSuchElementException: No value present
 2021-10-23T22:44:29.849+0700 ERROR Address is not found
 java.util.NoSuchElementException: No value present
 	at java.base/java.util.Optional.orElseThrow(Optional.java:377) ~[?:?]
-	at com.tma.sample.coffeeshop.unittest.service.AddressServiceImpl.edit(AddressServiceImpl.java:60) [classes/:?]
-	at com.tma.sample.coffeeshop.unittest.controller.admin.AddressRestController.editAddress(AddressRestController.java:32) [classes/:?]
+	at AddressServiceImpl.edit(AddressServiceImpl.java:60) [classes/:?]
+	at com.tma.sample.coffeeshop.controller.admin.AddressRestController.editAddress(AddressRestController.java:32) [classes/:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[?:?]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
@@ -131,8 +131,8 @@ java.util.NoSuchElementException: No value present
 2021-10-23T22:44:48.822+0700 ERROR Address is not found
 java.util.NoSuchElementException: No value present
 	at java.base/java.util.Optional.orElseThrow(Optional.java:377) ~[?:?]
-	at com.tma.sample.coffeeshop.unittest.service.AddressServiceImpl.edit(AddressServiceImpl.java:60) [classes/:?]
-	at com.tma.sample.coffeeshop.unittest.controller.admin.AddressRestController.editAddress(AddressRestController.java:32) [classes/:?]
+	at AddressServiceImpl.edit(AddressServiceImpl.java:60) [classes/:?]
+	at com.tma.sample.coffeeshop.controller.admin.AddressRestController.editAddress(AddressRestController.java:32) [classes/:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[?:?]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
@@ -186,8 +186,8 @@ java.util.NoSuchElementException: No value present
 2021-10-23T22:45:00.794+0700 ERROR Address is not found
 java.util.NoSuchElementException: No value present
 	at java.base/java.util.Optional.orElseThrow(Optional.java:377) ~[?:?]
-	at com.tma.sample.coffeeshop.unittest.service.AddressServiceImpl.edit(AddressServiceImpl.java:60) [classes/:?]
-	at com.tma.sample.coffeeshop.unittest.controller.admin.AddressRestController.editAddress(AddressRestController.java:32) [classes/:?]
+	at AddressServiceImpl.edit(AddressServiceImpl.java:60) [classes/:?]
+	at com.tma.sample.coffeeshop.controller.admin.AddressRestController.editAddress(AddressRestController.java:32) [classes/:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[?:?]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
@@ -241,8 +241,8 @@ java.util.NoSuchElementException: No value present
 2021-10-23T22:47:42.261+0700 ERROR Address is not found
 java.util.NoSuchElementException: No value present
 	at java.base/java.util.Optional.orElseThrow(Optional.java:377) ~[?:?]
-	at com.tma.sample.coffeeshop.unittest.service.AddressServiceImpl.edit(AddressServiceImpl.java:60) [classes/:?]
-	at com.tma.sample.coffeeshop.unittest.controller.admin.AddressRestController.editAddress(AddressRestController.java:32) [classes/:?]
+	at AddressServiceImpl.edit(AddressServiceImpl.java:60) [classes/:?]
+	at com.tma.sample.coffeeshop.controller.admin.AddressRestController.editAddress(AddressRestController.java:32) [classes/:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[?:?]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]

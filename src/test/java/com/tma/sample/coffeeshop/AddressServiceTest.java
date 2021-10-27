@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.unittest.service;
+package com.tma.sample.coffeeshop;
 
 import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;
@@ -7,6 +7,8 @@ import com.tma.sample.coffeeshop.mapper.AddressMapperImpl;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.repository.AddressRepository;
 import com.tma.sample.coffeeshop.repository.WardReposiroty;
+import com.tma.sample.coffeeshop.service.AddressService;
+import com.tma.sample.coffeeshop.service.AddressServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;

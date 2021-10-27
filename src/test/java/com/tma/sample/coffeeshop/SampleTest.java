@@ -1,4 +1,4 @@
-package com.tma.sample.coffeeshop.unittest;
+package com.tma.sample.coffeeshop;
 
 import com.tma.sample.coffeeshop.enums.ProductSize;
 import com.tma.sample.coffeeshop.model.Address;
