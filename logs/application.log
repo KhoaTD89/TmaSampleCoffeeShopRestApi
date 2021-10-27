@@ -348,3 +348,18 @@ java.util.NoSuchElementException: No value present
 2021-10-25T08:27:59.309+0700 ERROR No handler found for POST /customer/stores/store/1/customer/1
 2021-10-25T14:36:30.094+0700 ERROR not found address with Id=1
 2021-10-27T01:43:25.700+0700 ERROR not found address with Id=3
+2021-10-27T10:40:43.891+0700 ERROR not found address with Id=1
+2021-10-27T10:40:50.054+0700 ERROR not found address with Id=2
+2021-10-27T10:41:26.245+0700 ERROR not found address with Id=2
+2021-10-27T10:41:29.549+0700 ERROR not found address with Id=1
+2021-10-27T10:42:56.762+0700 ERROR not found address with Id=1
+2021-10-27T10:42:57.792+0700 ERROR not found address with Id=1
+2021-10-27T10:43:01.677+0700 ERROR not found address with Id=2
+2021-10-27T10:43:03.181+0700 ERROR not found address with Id=2
+2021-10-27T10:43:50.433+0700 ERROR not found address with Id=2
+2021-10-27T10:44:57.147+0700 ERROR not found address with Id=2
+2021-10-27T10:44:57.936+0700 ERROR not found address with Id=2
+2021-10-27T10:46:23.130+0700 ERROR not found address with Id=2
+2021-10-27T11:16:12.030+0700 ERROR No handler found for GET /favicon.ico
+2021-10-27T11:16:55.468+0700 ERROR No handler found for GET /.well-known/resource-that-should-not-exist-whose-status-code-should-not-be-200
+2021-10-27T11:16:55.474+0700 ERROR No handler found for GET /.well-known/change-password

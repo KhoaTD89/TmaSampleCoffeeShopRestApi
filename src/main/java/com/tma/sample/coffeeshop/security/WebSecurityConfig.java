@@ -51,7 +51,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic()
         ;
+        http.headers().frameOptions().disable(); //to allow h2 show table without check security~
     }
-
-
 }

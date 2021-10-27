@@ -38,6 +38,7 @@ public class AddressServiceTest {
     boolean editStatus;
 
     //config bean for these tests
+    //SpringbootTest loads all bean --> slower than @TestConfiguration
     @TestConfiguration
     public static class AddressServiceTestConfiguration {
         AddressMapper addressMapper = new AddressMapperImpl();
@@ -48,18 +49,18 @@ public class AddressServiceTest {
     }
 
     @Autowired
-    AddressService addressService;
+    AddressService addressService; //this bean is config from @TestConfiguration method
 
     @MockBean
-    AddressRepository addressRepository;
+    AddressRepository addressRepository;//mock object
     @MockBean
-    WardReposiroty wardReposiroty;
+    WardReposiroty wardReposiroty;//mock object
 
     @Before
     public void setup() {
-        //setup mock values when mock beans is called
         List<Address> collect = LongStream.range(0, ADDRESS_QTY).mapToObj(i -> new Address(i))
                 .collect(Collectors.toList());
+        //scenario when mock object is called
         Mockito.when(addressRepository.findByCustomerId(CUSTOMER_ID))
                 .thenReturn(collect);
         Mockito.when(addressRepository.findByStoreId(STORE_ID))
