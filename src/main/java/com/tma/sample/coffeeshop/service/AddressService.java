@@ -11,7 +11,7 @@ public interface AddressService {
 
     List<AddressViewDTO> getAllAddressesOfCustomer(long customerId);
 
-    List<AddressViewDTO> testGetAllAddressesOfCustomer(long customerId, int num, int qty);
+//    List<AddressViewDTO> testGetAllAddressesOfCustomer(long customerId, int num, int qty);
 
     List<AddressViewDTO> getAllAddressesOfStore(long storeId);
 

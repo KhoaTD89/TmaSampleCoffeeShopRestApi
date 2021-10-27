@@ -34,12 +34,12 @@ public class AddressServiceImpl implements AddressService {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public List<AddressViewDTO> testGetAllAddressesOfCustomer(long customerId, int num, int qty) {
-        Pageable addressPage = PageRequest.of(num,qty);
-        return addressRepository.findByCustomerId(customerId, addressPage).stream().map(addressMapper::map)
-                .collect(Collectors.toList());
-    }
+//    @Override
+//    public List<AddressViewDTO> testGetAllAddressesOfCustomer(long customerId, int num, int qty) {
+//        Pageable addressPage = PageRequest.of(num,qty);
+//        return addressRepository.findByCustomerIdTest(customerId, addressPage).stream().map(addressMapper::map)
+//                .collect(Collectors.toList());
+//    }
 
     @Override
     public List<AddressViewDTO> getAllAddressesOfStore(long storeId) {
