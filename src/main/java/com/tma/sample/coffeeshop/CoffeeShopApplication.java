@@ -16,7 +16,7 @@ public class CoffeeShopApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CoffeeShopApplication.class, args);
-//        writeLog();
+
     }
     public static void writeLog(){
         log.trace("for tracing purpose");
