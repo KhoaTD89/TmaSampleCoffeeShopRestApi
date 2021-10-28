@@ -66,8 +66,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-<!--            <version>1.4.200</version> &lt;!&ndash; ex: 1.2.140 &ndash;&gt;-->
-<!--            <scope>runtime</scope>-->
         </dependency>
 
         <dependency>

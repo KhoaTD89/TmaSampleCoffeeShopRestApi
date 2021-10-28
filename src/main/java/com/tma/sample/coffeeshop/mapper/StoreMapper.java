@@ -56,8 +56,8 @@ public abstract class StoreMapper {
                     .build();
 
             target.setAddressViewDTO(addressViewDTO);
-        }catch(ResourceNotFoundException e){
-            log.error("Address not found");
+        }catch(Exception e){
+            log.info("Address not found %s", e);
         }
     }
 

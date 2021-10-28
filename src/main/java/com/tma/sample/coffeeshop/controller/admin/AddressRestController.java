@@ -12,7 +12,7 @@ import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//TODO : refactor with ResponseEntity, paging
 @RestController
 @RequestMapping({"/admin/addresses"})
 public class AddressRestController {

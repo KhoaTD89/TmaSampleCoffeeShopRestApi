@@ -49,7 +49,7 @@ public abstract class ProductMapper {
             target.setImagePath(productDetail.getImagePath());
             target.setPrice(productDetail.getPrice());
         } catch (Exception e) {
-            log.error("error in mapping product,%s", e);
+            log.error("error in mapping product .%s", e);
         }
     }
 

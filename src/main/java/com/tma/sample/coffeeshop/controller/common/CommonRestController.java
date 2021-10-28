@@ -11,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("")
 public class CommonRestController {
 
     @Autowired
@@ -29,29 +29,33 @@ public class CommonRestController {
     private AddressService addressService;
 
     @GetMapping("/stores")
-    public Page<StoreDTO> getAllStores(Pageable pageable){
-        return storeService.findAll(pageable);
+    public ResponseEntity<Page<StoreDTO>> getAllStores(Pageable pageable) {
+        return ResponseEntity.ok()
+                .body(storeService.findAll(pageable));
     }
 
     @GetMapping("/stores/{storeId}")
-    public StoreDTO viewStoreDetail(@PathVariable long storeId){
-        StoreDTO storeDTO = storeService.viewStoreDetail(storeId);
-        return storeDTO;
+    public ResponseEntity<StoreDTO> viewStoreDetail(@PathVariable long storeId) {
+        return ResponseEntity.ok()
+                .body(storeService.viewStoreDetail(storeId));
     }
 
-//    @GetMapping("/stores/{storeId}/products")
-//    public Page<ProductDTO> getProductsOfAStore(@PathVariable long storeId,Pageable pageable){
-//        return productService.getAllProductOfAStore(storeId,pageable);
-//    }
+    @GetMapping("/stores/{storeId}/products")
+    public ResponseEntity<Page<ProductDTO>> getProductsOfAStore(@PathVariable long storeId, Pageable pageable) {
+        return ResponseEntity.ok()
+                .body(productService.getAllProductOfAStore(storeId, pageable));
+    }
 
     @GetMapping("/products/{productId}")
-    public ProductDTO getProductById(@PathVariable("productId") long productId){
-        return productService.getProductById(productId);
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable("productId") long productId) {
+        return ResponseEntity.ok()
+                .body(productService.getProductById(productId));
     }
 
-    @GetMapping("/{addressId}")
-    public AddressViewDTO getAddressbyId(@PathVariable long addressId) {
-        return addressService.getOne(addressId);
+    @GetMapping("/addresses/{addressId}")
+    public ResponseEntity<AddressViewDTO> getAddressbyId(@PathVariable long addressId) {
+        return ResponseEntity.ok()
+                .body(addressService.getOne(addressId));
     }
 
 }

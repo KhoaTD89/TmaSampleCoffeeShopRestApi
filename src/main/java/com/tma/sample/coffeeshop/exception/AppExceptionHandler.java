@@ -21,11 +21,19 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(creatNotFoundError(ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<Object> handleProductNotFound(ProductNotFoundException ex) {
+        return new ResponseEntity<>(creatNotFoundError(ex.getMessage()), HttpStatus.NOT_FOUND);
+    }
+
+
+    //hanle case url is wrong
     @Override
     protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         return new ResponseEntity<>(creatNotFoundError(ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 
+    //Create error for the log
     private ApiError creatNotFoundError(String message){
         log.error(message);
         return new ApiError(message, HttpStatus.NOT_FOUND, LocalDateTime.now());

@@ -9,11 +9,9 @@ public interface MenuService {
 
     boolean addProductToMenu(long storeId, long productId);
 
-    boolean editProduct(long productId,ProductDTO productDTO);
-
     void deleteProduct(long productId);
 
-    boolean createNewProduct(ProductDTO productDTO);
+
 
 
 

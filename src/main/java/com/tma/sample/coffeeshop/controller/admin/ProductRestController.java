@@ -6,6 +6,8 @@ import com.tma.sample.coffeeshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,24 +19,33 @@ public class ProductRestController {
     ProductService productService;
 
     @GetMapping
-    public Page<ProductDTO> getAllProduct(Pageable pageable){
-        return productService.findAll(pageable);
+    public ResponseEntity<Page<ProductDTO>>  getAllProduct(Pageable pageable){
+        return ResponseEntity.ok()
+                .body(productService.findAll(pageable));
     }
 
     @PostMapping
-    public boolean createNewProduct(@RequestBody ProductDTO productDTO){
-        return menuService.createNewProduct(productDTO);
+    public ResponseEntity<Object> createNewProduct(@RequestBody ProductDTO productDTO){
+        productService.createNewProduct(productDTO);
+        return ResponseEntity.ok()
+                .eTag("V12.11.1") //The ETag (or entity tag) HTTP response header is an identifier for a specific version of a resource
+                .body("Saved product");
     }
 
     @PutMapping("/{productId}")
-    public boolean editProduct(@PathVariable("productId") long productId
+    public ResponseEntity<Object> editProduct(@PathVariable("productId") long productId
             ,@RequestBody ProductDTO productDTO){
-        return menuService.editProduct(productId,productDTO);
+        productService.editProduct(productId,productDTO);
+        return ResponseEntity.ok()
+                .header("coffee-shop-location","Vietnam" ) //header for additional infor client want to sent
+                .body("edited product with id = " + productId);
     }
 
     @DeleteMapping("/{productId}")
-    public void deleteProduct(@PathVariable("productId") long productId){
-         menuService.deleteProduct(productId);
+    public ResponseEntity<Object> deleteProduct(@PathVariable("productId") long productId){
+            productService.deleteProduct(productId);
+            return ResponseEntity.ok()
+                    .body("Deleted product with id = " + productId);
     }
 
 }

@@ -12,4 +12,10 @@ public interface ProductService {
     ProductDTO getProductById(long productId);
 
     Page<ProductDTO> getAllProductOfAStore(long storeId,Pageable pageable);
+
+    void createNewProduct(ProductDTO productDTO);
+
+    void editProduct(long productId,ProductDTO productDTO);
+
+    void deleteProduct(long productId);
 }

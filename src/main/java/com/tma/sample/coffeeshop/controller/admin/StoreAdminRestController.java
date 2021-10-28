@@ -4,12 +4,13 @@ import com.tma.sample.coffeeshop.dto.StoreDTO;
 import com.tma.sample.coffeeshop.service.MenuService;
 import com.tma.sample.coffeeshop.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/stores")
 public class StoreAdminRestController {
 
     @Autowired
@@ -18,27 +19,34 @@ public class StoreAdminRestController {
     @Autowired
     MenuService menuService;
 
-    //Add product to a store menu
-    @PostMapping("/stores/{storeId}/products/{productId}")
-    public boolean addProductToMenu(@PathVariable long storeId,
-                                    @PathVariable long productId){
-        return menuService.addProductToMenu(storeId, productId);
+    @PostMapping("/{storeId}/products/{productId}")
+    public ResponseEntity<Object> addProductToMenu(@PathVariable long storeId,
+                                           @PathVariable long productId){
+        menuService.addProductToMenu(storeId, productId);
+        return ResponseEntity.ok()
+                .body("saved a product to menu of a store");
     }
 
     @PostMapping
-    public void saveStore(@RequestBody StoreDTO storeDTO,@RequestParam("addressId") long addressId){
+    public ResponseEntity<Object> saveStore(@RequestBody StoreDTO storeDTO,@RequestParam("addressId") long addressId){
         storeService.save(storeDTO,addressId);
+        return ResponseEntity.ok()
+                .body("saved a store");
     }
 
     @PutMapping("/{storeId}")
-    public void editStore(@RequestBody StoreDTO storeDTO
+    public ResponseEntity<Object> editStore(@RequestBody StoreDTO storeDTO
             ,@PathVariable long storeId
             ,@RequestParam("addressId") long addressId){
         storeService.edit(storeId,storeDTO,addressId);
+        return ResponseEntity.ok()
+                .body("Edited the store id = " + storeId);
     }
 
     @DeleteMapping("/{storeId}")
-    public void deleteStore(@PathVariable long storeId){
+    public ResponseEntity<Object> deleteStore(@PathVariable long storeId){
         storeService.delete(storeId);
+        return ResponseEntity.ok()
+                .body("deleted the store id = " + storeId);
     }
 }

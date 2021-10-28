@@ -34,69 +34,10 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public boolean editProduct(long productId, ProductDTO productDTO) {
-        Product product = productReposiroty.findById(productId).orElse(null);
-        if (product == null) return false;
-
-        try {
-            ProductDetail productDetail = productMapper.map(productDTO);
-
-            //save product
-            product.setName(productDTO.getName());
-            productReposiroty.save(product);
-
-            //save a new product detail
-            //todo: check if this product detail exists -> not save again
-            productDetail.setProduct(product);
-            productDetailRepository.save(productDetail);
-
-            //save category
-            Category category = categoryRepository.findById(productDTO.getCategoryId()).orElse(null);
-            ProductCategory productCategory = ProductCategory.builder()
-                    .product(product)
-                    .category(category)
-                    .build();
-            productCategoryRepository.save(productCategory);
-            return true;
-        } catch (Exception e) {
-            System.out.println("could not edit");
-        }
-
-        return false;
-    }
-
-    @Override
     public void deleteProduct(long productId) {
         productReposiroty.deleteById(productId);
     }
 
-    @Override
-    public boolean createNewProduct(ProductDTO productDTO) {
-        try {
-            ProductDetail productDetail = productMapper.map(productDTO);
-
-            //save product
-            Product product = new Product();
-            product.setName(productDTO.getName());
-            product.setActive(true);
-            Product savedProduct = productReposiroty.save(product);
-
-            //save product detail
-            productDetail.setProduct(product);
-            productDetailRepository.save(productDetail);
-
-            //save product category
-            Category category = categoryRepository.findById(productDTO.getCategoryId()).orElse(null);
-            ProductCategory productCategory = ProductCategory.builder()
-                    .product(savedProduct)
-                    .category(category)
-                    .build();
-            productCategoryRepository.save(productCategory);
-            return true;
-        } catch (Exception e) {
-            throw new RuntimeException("could not save the product to DB");
-        }
-    }
 
     @Override
     public boolean addProductToMenu(long storeId, long productId) {
