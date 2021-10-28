@@ -7,8 +7,10 @@ import com.tma.sample.coffeeshop.mapper.AddressMapper;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,18 +31,26 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<AddressViewDTO> getAllAddressesOfCustomer(long customerId) {
-        return addressRepository.findByCustomerId(customerId).stream().map(addressMapper::map)
-                .collect(Collectors.toList());
+    public Page<AddressViewDTO> getAllAddressesOfCustomer(long customerId,Pageable pageable) {
+        return addressRepository.findByCustomerId(customerId, pageable).map(address -> addressMapper.map(address));
     }
-
-
 
     @Override
-    public List<AddressViewDTO> getAllAddressesOfStore(long storeId) {
-        return addressRepository.findByStoreId(storeId).stream().map(addressMapper::map)
-                .collect(Collectors.toList());
+    public Page<AddressViewDTO> getAllAddressesOfStore(long storeId, Pageable pageable) {
+        return addressRepository.findByStoreId(storeId, pageable).map(address -> addressMapper.map(address));
     }
+
+    @Override
+    public Page<AddressViewDTO> getAllAddressesWithPaging(Pageable pageable) {
+        return addressRepository.findAll(pageable).map(address -> addressMapper.map(address));
+    }
+
+    //TODO: delete after Test
+    @Override
+    public Slice<AddressViewDTO> getAllAddressesWithSlice(Pageable pageable) {
+        return addressRepository.findAll(pageable).map(address -> addressMapper.map(address));
+    }
+
 
     @Override
     public AddressViewDTO getOne(long addressId) {

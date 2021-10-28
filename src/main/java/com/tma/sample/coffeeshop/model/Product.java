@@ -2,13 +2,19 @@ package com.tma.sample.coffeeshop.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product extends BaseEntity{
 
     @ManyToOne
@@ -20,7 +26,7 @@ public class Product extends BaseEntity{
     @JsonManagedReference
     private List<Menu> menus;
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<ProductDetail> productDetails;
 

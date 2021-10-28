@@ -1,5 +1,6 @@
 package com.tma.sample.coffeeshop.service;
 
+import com.tma.sample.coffeeshop.dto.ProductDTO;
 import com.tma.sample.coffeeshop.dto.StoreDTO;
 import com.tma.sample.coffeeshop.mapper.StoreMapper;
 import com.tma.sample.coffeeshop.model.Address;
@@ -7,6 +8,8 @@ import com.tma.sample.coffeeshop.model.Store;
 import com.tma.sample.coffeeshop.repository.AddressRepository;
 import com.tma.sample.coffeeshop.repository.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -28,10 +31,8 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public List<StoreDTO> findAll() {
-        List<StoreDTO> storeDTOS = new ArrayList<>();
-        storeRepository.findAll().stream().forEach(store -> storeDTOS.add(storeMapper.map(store)));
-        return storeDTOS;
+    public Page<StoreDTO> findAll(Pageable pageable) {
+        return storeRepository.findAll(pageable).map(p -> storeMapper.map(p));
     }
 
     @Override
@@ -59,7 +60,7 @@ public class StoreServiceImpl implements StoreService {
         if (store == null) return null;
 
         //find old address
-        List<Address> addresses = addressRepository.findByStoreId(storeId);
+        List<Address> addresses = addressRepository.findAllByStoreId(storeId);
         Address oldAddress;
         if (addresses.size() > 0) {
             oldAddress= addresses.get(0);
@@ -88,4 +89,5 @@ public class StoreServiceImpl implements StoreService {
     public void delete(long storeId) {
         storeRepository.deleteById(storeId);
     }
+
 }

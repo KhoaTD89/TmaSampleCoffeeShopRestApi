@@ -34,21 +34,6 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public List<ProductDTO> getAllProductOfAStore(long storeId) {
-        return menuRepository.findProductsOfAStore(storeId).stream().map(productMapper::map)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public ProductDTO getProductById(long productId) {
-        Product product = productReposiroty.findById(productId).orElse(null);
-        if (product != null) {
-            return productMapper.map(product);
-        }
-        return null;
-    }
-
-    @Override
     public boolean editProduct(long productId, ProductDTO productDTO) {
         Product product = productReposiroty.findById(productId).orElse(null);
         if (product == null) return false;

@@ -3,17 +3,20 @@ package com.tma.sample.coffeeshop.service;
 import com.tma.sample.coffeeshop.dto.AddressDTO;
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;
 import com.tma.sample.coffeeshop.model.Address;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 
 import java.util.List;
 
 public interface AddressService {
 
-    List<AddressViewDTO> getAllAddressesOfCustomer(long customerId);
+    //testing
+    Page<AddressViewDTO> getAllAddressesWithPaging(Pageable pageable);
+    Slice<AddressViewDTO> getAllAddressesWithSlice(Pageable pageable);
 
-//    List<AddressViewDTO> testGetAllAddressesOfCustomer(long customerId, int num, int qty);
-
-    List<AddressViewDTO> getAllAddressesOfStore(long storeId);
+    Page<AddressViewDTO> getAllAddressesOfCustomer(long customerId,Pageable pageable);
+    Page<AddressViewDTO> getAllAddressesOfStore(long storeId,Pageable pageable);
 
     AddressViewDTO getOne(long addressId);
     Address save(AddressDTO addressDTO);

@@ -60,7 +60,7 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-com.tma.sample.test</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>com.tma.sample.test</scope>
         </dependency>
         <dependency>

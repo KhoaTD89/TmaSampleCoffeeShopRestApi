@@ -1,29 +1,28 @@
 package com.tma.sample.coffeeshop.controller.admin;
 
 import com.tma.sample.coffeeshop.dto.StoreDTO;
+import com.tma.sample.coffeeshop.service.MenuService;
 import com.tma.sample.coffeeshop.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/stores")
-public class StoreRestController {
+@RequestMapping("/admin")
+public class StoreAdminRestController {
 
     @Autowired
     private StoreService storeService;
 
-    @GetMapping
-    public List<StoreDTO> storeList(){
-        return storeService.findAll();
-    }
+    @Autowired
+    MenuService menuService;
 
-    @GetMapping("/{storeId}")
-    public StoreDTO viewStoreDetail(@PathVariable long storeId){
-        StoreDTO storeDTO = storeService.viewStoreDetail(storeId);
-        return storeDTO;
+    //Add product to a store menu
+    @PostMapping("/stores/{storeId}/products/{productId}")
+    public boolean addProductToMenu(@PathVariable long storeId,
+                                    @PathVariable long productId){
+        return menuService.addProductToMenu(storeId, productId);
     }
 
     @PostMapping

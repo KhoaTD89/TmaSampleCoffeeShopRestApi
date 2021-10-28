@@ -13,46 +13,46 @@ import java.util.List;
 
 @SpringBootTest
 class ProductDetailRepoTest {
-    @Autowired
-    ProductDetailRepository productDetailRepository;
-    @Autowired
-    ProductReposiroty productReposiroty;
-
-    ProductDetail productDetail;
-
-    List<ProductDetail> productDetailsRet;
-
-    @Test
-    void testFindAddressByStoreId(){
-        given: setupProductDetails();
-        and: insertOneProductDetails();
-        when: findByProductIdAndSizeIsCalled();
-        then: verifyActualProductDetailsRetContainsOne();
-    }
-
-    @Test
-    public void anotherTest(){
-
-    }
-
-    private void verifyActualProductDetailsRetContainsOne() {
-        Assertions.assertEquals(productDetailsRet.get(0).getPrice(),94);
-    }
-
-    private void findByProductIdAndSizeIsCalled() {
-        productDetailsRet = productDetailRepository.findByProductIdAndSize(1, ProductSize.M);
-    }
-
-    private void insertOneProductDetails() {
-        productDetailRepository.save(productDetail);
-    }
-
-    private void setupProductDetails() {
-        productDetail = ProductDetail.builder()
-                .product(productReposiroty.getById(1L))
-                .price(94)
-                .size(ProductSize.M)
-                .build();
-    }
+//    @Autowired
+//    ProductDetailRepository productDetailRepository;
+//    @Autowired
+//    ProductReposiroty productReposiroty;
+//
+//    ProductDetail productDetail;
+//
+//    List<ProductDetail> productDetailsRet;
+//
+//    @Test
+//    void testFindAddressByStoreId(){
+//        given: setupProductDetails();
+//        and: insertOneProductDetails();
+//        when: findByProductIdAndSizeIsCalled();
+//        then: verifyActualProductDetailsRetContainsOne();
+//    }
+//
+//    @Test
+//    public void anotherTest(){
+//
+//    }
+//
+//    private void verifyActualProductDetailsRetContainsOne() {
+//        Assertions.assertEquals(productDetailsRet.get(0).getPrice(),94);
+//    }
+//
+//    private void findByProductIdAndSizeIsCalled() {
+//        productDetailsRet = productDetailRepository.findByProductIdAndSize(1, ProductSize.M);
+//    }
+//
+//    private void insertOneProductDetails() {
+//        productDetailRepository.save(productDetail);
+//    }
+//
+//    private void setupProductDetails() {
+//        productDetail = ProductDetail.builder()
+//                .product(productReposiroty.getById(1L))
+//                .price(94)
+//                .size(ProductSize.M)
+//                .build();
+//    }
 
 }

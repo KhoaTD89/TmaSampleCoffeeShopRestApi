@@ -16,36 +16,36 @@ import java.util.List;
 @DataJpaTest
 @TestPropertySource("classpath:application-test.properties")
 public class AddressRepositoryTest {
-
-    @Autowired
-    AddressRepository addressRepository;
-
-    //    @Autowired
-//    JdbcTemplate jdbcTemplate;
-//    private static boolean isInserted = false;
-//    private final String CREATE_CITY_SQL = "sql/create/data.sql";
-//    @Before
-//    public void testGetBeanFromConfiguration() throws SQLException {
-//        if(!isInserted){
-//            ScriptUtils.executeSqlScript(getConnection(), new ClassPathResource(CREATE_CITY_SQL));
-//            isInserted = true;
-//        }
+//
+//    @Autowired
+//    AddressRepository addressRepository;
+//
+//    //    @Autowired
+////    JdbcTemplate jdbcTemplate;
+////    private static boolean isInserted = false;
+////    private final String CREATE_CITY_SQL = "sql/create/data.sql";
+////    @Before
+////    public void testGetBeanFromConfiguration() throws SQLException {
+////        if(!isInserted){
+////            ScriptUtils.executeSqlScript(getConnection(), new ClassPathResource(CREATE_CITY_SQL));
+////            isInserted = true;
+////        }
+////    }
+////    private Connection getConnection() throws SQLException {
+////        return jdbcTemplate.getDataSource().getConnection();
+////    }
+//
+//    @Test
+//    public void givenCustomerId_thenReturnListAddresses() {
+//        List<Address> byCustomerId = addressRepository.findByCustomerId(1);
+//        Assert.assertEquals(byCustomerId.get(0).getBuilding(), "bitecco");
 //    }
-//    private Connection getConnection() throws SQLException {
-//        return jdbcTemplate.getDataSource().getConnection();
+//
+//    @Test
+//    public void givenStoreId_thenReturnListAddresses() {
+//        List<Address> byCustomerId = addressRepository.findByCustomerId(1);
+//        Assert.assertEquals(byCustomerId.get(0).getBuilding(), "bitecco");
 //    }
-
-    @Test
-    public void givenCustomerId_thenReturnListAddresses() {
-        List<Address> byCustomerId = addressRepository.findByCustomerId(1);
-        Assert.assertEquals(byCustomerId.get(0).getBuilding(), "bitecco");
-    }
-
-    @Test
-    public void givenStoreId_thenReturnListAddresses() {
-        List<Address> byCustomerId = addressRepository.findByCustomerId(1);
-        Assert.assertEquals(byCustomerId.get(0).getBuilding(), "bitecco");
-    }
-
+//
 
 }

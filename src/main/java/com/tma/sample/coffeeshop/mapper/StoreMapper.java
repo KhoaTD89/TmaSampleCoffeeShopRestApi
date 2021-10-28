@@ -2,9 +2,11 @@ package com.tma.sample.coffeeshop.mapper;
 
 import com.tma.sample.coffeeshop.dto.AddressViewDTO;
 import com.tma.sample.coffeeshop.dto.StoreDTO;
+import com.tma.sample.coffeeshop.exception.ResourceNotFoundException;
 import com.tma.sample.coffeeshop.model.Address;
 import com.tma.sample.coffeeshop.model.Store;
 import com.tma.sample.coffeeshop.repository.AddressRepository;
+import lombok.extern.log4j.Log4j2;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -15,6 +17,7 @@ import java.util.Optional;
 
 // @Mapper(componentModel = "spring", imports = Store.class)
 @org.mapstruct.Mapper(componentModel = "spring", imports = Store.class)
+@Log4j2
 public abstract class StoreMapper {
 
     @Autowired
@@ -53,8 +56,8 @@ public abstract class StoreMapper {
                     .build();
 
             target.setAddressViewDTO(addressViewDTO);
-        }catch(NullPointerException e){
-            throw new NullPointerException("Address not found");
+        }catch(ResourceNotFoundException e){
+            log.error("Address not found");
         }
     }
 

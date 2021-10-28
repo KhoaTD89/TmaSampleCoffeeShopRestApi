@@ -2,7 +2,10 @@ package com.tma.sample.coffeeshop.controller.admin;
 
 import com.tma.sample.coffeeshop.dto.ProductDTO;
 import com.tma.sample.coffeeshop.service.MenuService;
+import com.tma.sample.coffeeshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,10 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class ProductRestController {
     @Autowired
     MenuService menuService;
+    @Autowired
+    ProductService productService;
 
-    @GetMapping("/{productId}")
-    public ProductDTO getProductById(@PathVariable("productId") long productId){
-        return menuService.getProductById(productId);
+    @GetMapping
+    public Page<ProductDTO> getAllProduct(Pageable pageable){
+        return productService.findAll(pageable);
     }
 
     @PostMapping
